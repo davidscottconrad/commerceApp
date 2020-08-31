@@ -12,7 +12,27 @@ class UsersRepository{
         catch(error)
         {fs.writeFileSync(this.filename,'[]');}
     }
-    async checkForFile(){}
+    async getAll(){
+        //open file 
+        //read file
+        //parse contents
+        //return parsed data
+        return JSON.parse(await fs.promises.readFile(this.filename, {
+            encoding: 'utf8'
+        }));
+    }
+
+    async creat(attrs){
+        
+    }
 }
 
 const repo = new UsersRepository('users.json');
+
+const test = async () => {
+    const repo = new UsersRepository('users.json');
+    const users = await repo.getAll();
+    console.log(users);
+}
+
+test();
